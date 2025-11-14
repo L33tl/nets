@@ -1,0 +1,31 @@
+---
+
+- name: Deploy file
+  hosts: all
+
+  tasks:
+    - name: Deploy file
+      ansible.builtin.copy:
+        dest: $HOME/test.txt
+        content: test_file_content
+        mode: "644"
+
+    - name: Get file status
+      ansible.builtin.stat:
+        path: $HOME/test.txt
+      register: file_check_result
+
+    - name: Print file status
+      ansible.builtin.debug:
+        msg: "The file exists? - '{{ file_check_result.stat.path }}"
+
+    - name: Add line to file
+      ansible.builtin.lineinfile:
+        path: $HOME/test.txt
+        line: "Bim bim bam bam"
+        state: present
+
+    - name: Delete file
+      ansible.builtin.file:
+        dest: $HOME/test.txt
+        state: absent
