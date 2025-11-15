@@ -226,7 +226,7 @@ psql -h localhost -U postgres
 
 В любом случае видим, что каждая бд поднята на своём порту и всё ок
 
-![allok]anapa-2007/(allok.png)
+![allok](anapa-2007/allok.png)
 
 ### Роняем мастер ноду
 
